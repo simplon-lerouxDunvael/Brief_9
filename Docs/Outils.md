@@ -25,10 +25,12 @@
 ### **SonarQube**
 
 Avantages:
+
 SonarQube est une plateforme complète qui peut analyser plus de 27 langages de programmation.
 SonarQube est facile à intégrer à un pipeline de développement.
 Il offre des fonctionnalités de test de sécurité statiques et dynamiques, ainsi que des vérifications de conformité et de qualité de code.
 La plateforme propose également une vue complète de la santé du projet, y compris une vue d'ensemble des vulnérabilités.
+
 Inconvénients:
 
 SonarQube peut parfois donner des faux positifs.
@@ -45,6 +47,7 @@ Si vous avez besoin d'une solution complète pour l'analyse de la qualité de co
 OWASP Dependency-Check est une solution de test de sécurité des dépendances open source.
 Il peut détecter les vulnérabilités dans les bibliothèques tierces.
 OWASP Dependency-Check est facile à installer et à utiliser.
+
 Inconvénients:
 
 Il peut produire un grand nombre de faux positifs.
@@ -148,6 +151,10 @@ OWASP Dependency-Check est également une option intéressante pour les pipeline
 Clair, Trivy et Grype peuvent également être utilisés pour des tests de sécurité automatisés dans des pipelines Azure DevOps, mais leur intégration avec la plateforme peut être plus complexe.
 
 OWASP Zap, quant à lui, est un outil de test de sécurité spécifiquement conçu pour les applications web et peut être utilisé pour des tests de sécurité automatisés de manière efficace. Il dispose également d'un plugin pour Azure DevOps, ce qui facilite son intégration.
+
+=> Trivy mais compliqué avec Azure DevOps
+=> OWASP Zap bien avec Azure DevOps mais compliqué à configurer
+=> si besoin SonarQube qui est bien avec Azure DevOps mais bcp de faux positifs.
 
 [&#8679;](#top)
 
