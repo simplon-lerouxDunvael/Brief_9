@@ -45,7 +45,7 @@ echo "Redis database secret created."
 
 # Create Redis database secret
 echo "Creating Redis database secret..."
-kubectl apply -f azure-vote.yaml -n qa
+kubectl apply -f azure-vote.yaml -n qua
 kubectl apply -f azure-vote.yaml -n prod
 echo "Redis database secret created."
 
