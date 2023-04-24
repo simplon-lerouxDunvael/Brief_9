@@ -1,0 +1,254 @@
+<div style='text-align: justify;'>
+
+<div id='top'/>
+
+### Summary
+
+###### [00 - Daily Scrum](#Scrum)
+
+###### [01 -  doc reading](#Doc)
+
+###### [02 - Creation of a resource group](#RG)
+
+###### [03 - ](#)
+
+###### [04 - ](#)
+
+###### [05 - ](#)
+
+###### [06 - ](#)
+
+###### [0 - Usefull Commands](#UsefullCommands)
+
+<div id='Scrum'/>  
+
+### **Scrum quotidien**
+
+Scrum Master = Me, myself and I
+Daily personnal reactions with reports and designations of first tasks for the day.
+
+Frequent meeting with other coworkers to study solutions to encountered problems together.
+
+[scrums](https://github.com/simplon-lerouxDunvael/Brief_7/blob/main/Plans_et_demarches/Scrum.md)
+
+[&#8679;](#top)
+
+<div id='Docs'/>  
+
+#### ** doc reading**
+
+Researches and reading of documentations to determine the needed prerequisites, functionnalities and softwares to complete the different tasks of Brief 9.
+
+[&#8679;](#top)   
+
+<div id='RG'/>  
+
+### **Creation of a resource group**
+
+I created a resource group via a script .sh.
+
+[&#8679;](#top)
+
+<div id=''/>  
+
+### ** **
+
+
+
+[&#8679;](#top)
+
+<div id=''/>  
+
+### ** **
+
+
+[&#8679;](#top)
+
+<div id=''/>  
+
+### **Connecting to Azure DevOps Pipelines**
+
+First I went to Azure DevOps, created a project and clicked on Pipelines : <https://dev.azure.com/dlerouxext/b8duna> 
+
+Then, I had to configure my organization and project's [visibility](https://learn.microsoft.com/en-us/azure/devops/organizations/projects/make-project-public?view=azure-devops). I went to the settings and turned on the visibility to public.
+
+Since the last update of Kubernetes, the connection to Azure can't be made with the service connections.  
+Therefore, I had to create a kubeconfig file that recovers several connections informations.
+
+```Bash
+az aks get-credentials --resource-group $rgname --name $aksname -f kubeconfig.yaml
+```
+
+Then I had to download it and place it directly in my Git repository (downloading it from azure terminal does not push it into Git) :
+
+```Bash
+download kubeconfig.yaml
+```
+
+Once downloaded, I just had to put the code into the Kubernetes service connection (choosing autoConfig params) to be able to use my pipeline and Kubernetes services.
+
+Then I created a Docker Hub registry in order to be able to build and push the Docker Image with my Pipeline. This way, the Docker image version would be updated when I excecuted the auto_maj.sh script and I could configure my pipeline to deploy Docker image the latest version into the qua and prod environments.
+
+[&#8679;](#top)
+
+<div id='PipeCreation'/>  
+
+### **Pipeline creation**
+
+The pipeline is constructed in a specific order :
+
+* First I declared the variables that would be used several times
+* Then I created a job to Build and Push the Docker Image into my Docker repository previously created
+* Once the docker image was created, I deployed it (in a canary way) to the qua namespace and checked that the voting app responded well with a curl (deployment.yaml)
+* Then as it worked, I deployed it (also in a canary way) to the prod namespace and checked that the voting app responded well with a curl too (deployment-canary.yaml)
+* Then I used a bash script to check the replicas created (2 for prod, 1 for qua). This way, I knew that in the namespace prod, there were one voting app with the old version and one with the new version. The cluster IP would manage the users between the pods.
+* Then I promoted the new version to all the pods in the prod namespace (deployment.yaml)
+* As the checks were successful, I deleted the canary deployment from the prod namespace (deployment-canary.yaml)
+
+As the pipeline was working correctly, I ran the auto_maj.sh script to check if the pipeline would automatically run. It did run properly.
+
+Finally I created the update procedure document.
+
+[&#8679;](#top)
+
+<div id='UsefullCommands'/>  
+
+### **USEFULL COMMANDS**
+
+### **To create an alias for a command on azure CLi**
+
+alias [WhatWeWant]="[WhatIsChanged]"  
+
+*Example :*  
+
+```bash
+alias k="kubectl"
+```
+
+[&#8679;](#top)
+
+### **To deploy resources with yaml file**
+
+kubectl apply -f [name-of-the-yaml-file]
+
+*Example :*  
+
+```bash
+kubectl apply -f azure-vote.yaml
+```
+
+[&#8679;](#top)
+
+### **To check resources**
+
+```bash
+kubectl get nodes
+kubectl get pods
+kubectl get services
+kubectl get deployments
+kubectl get events
+kubectl get secrets
+kubectl get logs
+```
+
+*To keep verifying the resources add --watch at the end of the command :*
+
+*Example :*
+
+```bash
+kubectl get services --watch
+```
+
+*To check the resources according to their namespace, add --namespace after the command and the namespace's name :*
+
+*Example :*
+
+```bash
+kubectl get services --namespace [namespace's-name]
+```
+
+[&#8679;](#top)
+
+### **To describe resources**
+
+```bash
+kubectl describe nodes
+kubectl describe pods
+kubectl describe services # or svc
+kubectl describe deployment # or deploy
+kubectl describe events
+kubectl describe secrets
+kubectl describe logs
+```
+
+*To specify which resource needs to be described just put the resource ID at the end of the command.*
+
+*Example :*
+
+```bash
+kubectl describe svc redis-service
+```
+
+*To access to all the logs from all containers :*
+
+```bash
+kubectl logs podname --all-containers
+```
+
+*To access to the logs from a specific container :*
+
+```bash
+kubectl logs podname -c [container's-name]
+```
+
+*To list all events from a specific pod :*
+
+```bash
+kubectl get events --field-selector [involvedObject].name=[podsname]
+```
+
+[&#8679;](#top)
+
+### **To delete resources**
+
+```bash
+kubectl delete deploy --all
+kubectl delete svc --all
+kubectl delete pvc --all
+kubectl delete pv --all
+az group delete --name [resourceGroupName] --yes --no-wait
+```
+
+[&#8679;](#top)
+
+### **To check TLS certificate in request order**
+
+```bash
+kubectl get certificate
+kubectl get certificaterequest
+kubectl get order
+kubectl get challenge
+```
+
+[&#8679;](#top)
+
+### **To describe TLS certificate in request order**
+
+```bash
+kubectl describe certificate
+kubectl describe certificaterequest
+kubectl describe order
+kubectl describe challenge
+```
+
+[&#8679;](#top)
+
+### **Get the IP address to point the DNS to nginx in the two namespaces**
+
+```bash
+kubectl get svc --all-namespaces
+```
+
+[&#8679;](#top)
+
+</div>
