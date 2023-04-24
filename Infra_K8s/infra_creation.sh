@@ -63,8 +63,8 @@ sleep 30s
 echo "Alright, let's steam ahead !"
 
 # Extract External IP address
-ProdIngIP=$(kubectl get svc nginx-prod-nginx-ingress -n prod -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
-QuaIngIP=$(kubectl get svc nginx-qua-nginx-ingress -n qua -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
+QuaIngIP=$(kubectl get svc $IngQua -n qua -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
+ProdIngIP=$(kubectl get svc $IngProd -n prod -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
 echo "Prod Ingress: $ProdIngIP"
 echo "QUA Ingress: $QuaIngIP"
 
