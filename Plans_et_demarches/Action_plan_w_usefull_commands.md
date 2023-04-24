@@ -131,6 +131,18 @@ Finally I created the update procedure document.
 
 ### **USEFULL COMMANDS**
 
+### **To clone and pull a GitHub repository **
+
+```bash
+git clone [GitHubRepositoryURL]
+```
+
+```bash
+git pull
+```
+
+[&#8679;](#top)
+
 ### **To create an alias for a command on azure CLi**
 
 alias [WhatWeWant]="[WhatIsChanged]"  
