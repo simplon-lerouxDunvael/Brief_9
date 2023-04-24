@@ -32,6 +32,8 @@ Inconvénients:
 SonarQube peut parfois donner des faux positifs.
 Le processus d'installation et de configuration de SonarQube peut être long et fastidieux.
 
+Si vous avez besoin d'une solution complète pour l'analyse de la qualité de code et de la sécurité, SonarQube est une bonne option. Cet outil est capable de tester plus de 27 langages de programmation et peut être facilement intégré dans un pipeline de développement. Cependant, SonarQube peut parfois produire des faux positifs.
+
 <div id='OWAS1'/>  
 
 ### **OWASP Dependency-Check**
@@ -43,6 +45,8 @@ Inconvénients:
 
 Il peut produire un grand nombre de faux positifs.
 OWASP Dependency-Check ne peut détecter que les vulnérabilités connues.
+
+Si vous voulez tester les vulnérabilités dans les bibliothèques tierces, OWASP Dependency-Check est un choix solide. Il est facile à utiliser et à installer, mais peut produire un grand nombre de faux positifs.
 
 <div id='Clair'/>  
 
@@ -57,6 +61,8 @@ Inconvénients:
 Il ne peut pas détecter les vulnérabilités inconnues.
 Clair ne prend pas en charge tous les types de conteneurs.
 
+ Clair est simple et facile à utiliser pour les conteneurs, mais il ne peut pas détecter les vulnérabilités inconnues. 
+
 <div id='Trivy'/>  
 
 ### **Trivy**
@@ -69,6 +75,7 @@ Inconvénients:
 
 Le temps d'exécution de Trivy peut être long sur les images de conteneurs volumineuses.
 Il ne peut pas détecter les vulnérabilités dans les systèmes d'exploitation.
+Trivy est un outil plus puissant, qui prend en charge plusieurs types de conteneurs et peut détecter des vulnérabilités inconnues, mais il peut prendre beaucoup de temps à s'exécuter sur des images de conteneurs volumineuses. 
 
 <div id='Grype'/>  
 
@@ -83,6 +90,8 @@ Inconvénients:
 Il ne prend pas en charge toutes les fonctionnalités de Docker, comme les manifestes de plateforme.
 Il peut y avoir des problèmes de compatibilité avec les anciennes versions de Python.
 
+Grype est similaire à Trivy, mais il ne prend pas en charge toutes les fonctionnalités de Docker.
+
 <div id='OWASP2'/>  
 
 ### **OWASP Zap**
@@ -96,12 +105,16 @@ Inconvénients:
 Il peut produire un grand nombre de faux positifs.
 OWASP Zap peut être difficile à configurer pour les utilisateurs inexpérimentés.
 
+Pour les tests de sécurité des applications web, OWASP Zap est une option populaire. Il offre une variété de fonctionnalités de test de sécurité, telles que les attaques de force brute, les injections de SQL et les attaques XSS. Cependant, il peut également produire un grand nombre de faux positifs et peut être difficile à configurer pour les utilisateurs inexpérimentés.
+
 <div id='Conclusion'/>  
 
 ### **Conclusion**
 
 Chaque outil de test de sécurité automatisé a ses avantages et inconvénients. Le choix de l'outil dépend des besoins spécifiques de chaque projet et de l'environnement de développement. 
 
+En fin de compte, le choix de l'outil dépend des besoins spécifiques de chaque projet et des préférences de l'équipe de développement. 
+Si vous travaillez avec des images de conteneurs, Clair, Trivy et Grype sont de bons choix.
 
 [&#8679;](#top)
 
