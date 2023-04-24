@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set variables
-rgname="b8duna"
+rgname="b9duna"
 aksname="AKSClusterDuna"
 rgloc="francecentral"
 redusrqua="devuserqua"
