@@ -45,7 +45,13 @@ Researches and reading of documentations to determine the needed prerequisites, 
 
 ### **Creation of a resource group**
 
-I created a resource group via a script .sh.
+I created a resource group via the file script .sh (created beforehand). It was supposed to install nginx as well but I had an error message. it seemed that the https link (https://helm.nginx.com/stable) from nginx official site was not valid anymore.
+
+After exchanging with Joffrey, i went to https://artifacthub.io/packages/search?ts_query_web=nginx&sort=relevance&page=1 as he advised.
+
+I searched for nginx and updated my code with the right url. Then I updated the commands to install nginx on the namespaces with the right repo name (created before).
+
+![nginx_install_changes](https://user-images.githubusercontent.com/108001918/233959236-d5cd8517-96c3-4ae8-8c24-79d6e430b957.png)
 
 [&#8679;](#top)
 
