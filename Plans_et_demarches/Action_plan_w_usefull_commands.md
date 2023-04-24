@@ -55,6 +55,14 @@ I searched for [nginx](https://artifacthub.io/packages/helm/bitnami/nginx) and u
 
 It still did not work. Therefore I created variables for the namespaces' names and put them in the commands to install nginx in each namespace. Then I updated the commands to extract the external IP addresses of each namespace (to put them in the DNS records smoothie-prod and smoothie-qua).
 
+Nginx was now properly installed on both namespaces. I updated the DNS records IP addresses with the ones displaying thanks to my script.
+
+Then i downloaded the kubeconfig file to update it in my GitHub repository :
+
+```Bash
+download kubeconfig.yaml
+```
+
 [&#8679;](#top)
 
 <div id=''/>  
