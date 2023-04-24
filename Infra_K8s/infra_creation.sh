@@ -10,6 +10,9 @@ redusrprod="devuserprod"
 redpassprod="password_redis_265"
 apitoken="2fbAa8tMWHBUnNwFi5EhuRgp"
 certvers="v1.10.1"
+IngQua="nginx-qua"
+IngProd="nginx-prod"
+
 
 # Create resource group
 echo "Creating resource group..."
@@ -50,8 +53,8 @@ echo "Redis database secret created."
 echo "Installing NGINX Ingress Controller..."
 helm repo add nginx-repo https://charts.bitnami.com/bitnami
 helm repo update
-helm install nginx-qua nginx-repo/nginx --create-namespace -n qua --debug --set controller.ingressClass="nginx-qua"
-helm install nginx-prod nginx-repo/nginx --create-namespace -n prod --debug --set controller.ingressClass="nginx-prod"
+helm install $IngQua nginx-repo/nginx --create-namespace -n qua --debug --set controller.ingressClass="$IngQua"
+helm install $IngProd nginx-repo/nginx --create-namespace -n prod --debug --set controller.ingressClass="$IngProd"
 echo "NGINX Ingress Controller installed."
 
 # Break time for Nginx to initialize
