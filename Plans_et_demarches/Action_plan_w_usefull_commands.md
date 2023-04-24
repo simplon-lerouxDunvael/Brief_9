@@ -53,6 +53,8 @@ I searched for [nginx](https://artifacthub.io/packages/helm/bitnami/nginx) and u
 
 ![nginx_install_changes](https://user-images.githubusercontent.com/108001918/233959236-d5cd8517-96c3-4ae8-8c24-79d6e430b957.png)
 
+It still did not work. Therefore I created variables for the namespaces' names and put them in the commands to install nginx in each namespace. Then I updated the commands to extract the external IP addresses of each namespace (to put them in the DNS records smoothie-prod and smoothie-qua).
+
 [&#8679;](#top)
 
 <div id=''/>  
