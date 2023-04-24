@@ -40,6 +40,12 @@ echo "Creating Redis database secret for namespace prod..."
 kubectl create secret generic redis-secret-duna --from-literal=username=$redusrprod --from-literal=password=$redpassprod -n prod
 echo "Redis database secret created."
 
+# Create Redis database secret
+echo "Creating Redis database secret..."
+kubectl apply -f azure-vote.yaml -n qa
+kubectl apply -f azure-vote.yaml -n prod
+echo "Redis database secret created."
+
 # Install NGINX Ingress Controller
 echo "Installing NGINX Ingress Controller..."
 helm repo add nginx-repo https://charts.bitnami.com/bitnami
