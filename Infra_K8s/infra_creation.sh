@@ -42,10 +42,10 @@ echo "Redis database secret created."
 
 # Install NGINX Ingress Controller
 echo "Installing NGINX Ingress Controller..."
-helm repo add nginx-stable https://helm.nginx.com/stable
+helm repo add nginx-repo https://charts.bitnami.com/bitnami
 helm repo update
-helm install nginx-qua nginx-stable/nginx-ingress --create-namespace -n qua --debug --set controller.ingressClass="nginx-qua"
-helm install nginx-prod nginx-stable/nginx-ingress --create-namespace -n prod --debug --set controller.ingressClass="nginx-prod"
+helm install nginx-qua nginx-repo/nginx --create-namespace -n qua --debug --set controller.ingressClass="nginx-qua"
+helm install nginx-prod nginx-repo/nginx --create-namespace -n prod --debug --set controller.ingressClass="nginx-prod"
 echo "NGINX Ingress Controller installed."
 
 # Break time for Nginx to initialize
