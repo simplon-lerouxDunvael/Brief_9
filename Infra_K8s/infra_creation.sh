@@ -51,10 +51,10 @@ echo "Redis database secret created."
 
 # Install NGINX Ingress Controller
 echo "Installing NGINX Ingress Controller..."
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx # helm repo add nginx-repo https://charts.bitnami.com/bitnam
+helm repo add nginx-stable https://helm.nginx.com/stable
 helm repo update
-helm install $IngQua ingress-nginx/ingress-nginx --create-namespace -n qua --debug --set controller.ingressClass="$IngQua"
-helm install $IngProd ingress-nginx/ingress-nginx --create-namespace -n prod --debug --set controller.ingressClass="$IngProd"
+helm install $IngQua nginx-stable/nginx-ingress --create-namespace -n qua --debug --set controller.ingressClass="$IngQua"
+helm install $IngProd nginx-stable/nginx-ingress --create-namespace -n prod --debug --set controller.ingressClass="$IngProd"
 echo "NGINX Ingress Controller installed."
 
 # Break time for Nginx to initialize
@@ -63,10 +63,10 @@ sleep 30s
 echo "Alright, let's steam ahead !"
 
 # Extract External IP address
-QuaIngIP=$(kubectl get svc $IngQua -n qua -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
-ProdIngIP=$(kubectl get svc $IngProd -n prod -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
-echo "Prod Ingress: $ProdIngIP"
+QuaIngIP=$(kubectl get svc nginx-qua-nginx-ingress-controller -n qa -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
+ProdIngIP=$(kubectl get svc nginx-prod-nginx-ingress-controller -n prod -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
 echo "QUA Ingress: $QuaIngIP"
+echo "Prod Ingress: $ProdIngIP"
 
 # Insert a pause in the script so that users can report IP to DNS
 read -n1 -r -p "Press Y to continue, or N to stop: " key
