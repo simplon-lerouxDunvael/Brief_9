@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S bash -Eeuxo pipefail
 
 # Set variables
 rgname="b9duna"
@@ -8,7 +8,7 @@ redusrqua="devuserqua"
 redpassqua="password_redis_154"
 redusrprod="devuserprod"
 redpassprod="password_redis_265"
-apitoken="2fbAa8tMWHBUnNwFi5EhuRgp"
+apitoken="XK6pTRqfZMkBiEyeTcNeEKLB"
 certvers="v1.10.1"
 IngQua="nginx-qua"
 IngProd="nginx-prod"
