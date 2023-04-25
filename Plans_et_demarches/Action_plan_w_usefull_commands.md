@@ -104,39 +104,9 @@ Once downloaded, I just had to put the code into the Kubernetes service connecti
 
 ![service_connection](https://user-images.githubusercontent.com/108001918/234284979-560ba75e-977a-4328-8f39-9dacd37b621f.png)
 
-[&#8679;](#top)
+Then I created a new GitHub repository and copy/pasteed all the files from the previous repository from brief 8 : azVotingApp_b8duna and named it azVotingApp_b9duna.
 
-<div id=''/>  
-
-### ** **
-
-
-[&#8679;](#top)
-
-<div id=''/>  
-
-### **Connecting to Azure DevOps Pipelines**
-
-First I went to Azure DevOps, created a project and clicked on Pipelines : <https://dev.azure.com/dlerouxext/b8duna> 
-
-Then, I had to configure my organization and project's [visibility](https://learn.microsoft.com/en-us/azure/devops/organizations/projects/make-project-public?view=azure-devops). I went to the settings and turned on the visibility to public.
-
-Since the last update of Kubernetes, the connection to Azure can't be made with the service connections.  
-Therefore, I had to create a kubeconfig file that recovers several connections informations.
-
-```Bash
-az aks get-credentials --resource-group $rgname --name $aksname -f kubeconfig.yaml
-```
-
-Then I had to download it and place it directly in my Git repository (downloading it from azure terminal does not push it into Git) :
-
-```Bash
-download kubeconfig.yaml
-```
-
-Once downloaded, I just had to put the code into the Kubernetes service connection (choosing autoConfig params) to be able to use my pipeline and Kubernetes services.
-
-Then I created a Docker Hub registry in order to be able to build and push the Docker Image with my Pipeline. This way, the Docker image version would be updated when I excecuted the auto_maj.sh script and I could configure my pipeline to deploy Docker image the latest version into the qua and prod environments.
+Finally i used the pipeline that was created during brief 8.
 
 [&#8679;](#top)
 
@@ -154,9 +124,6 @@ The pipeline is constructed in a specific order :
 * Then I promoted the new version to all the pods in the prod namespace (deployment.yaml)
 * As the checks were successful, I deleted the canary deployment from the prod namespace (deployment-canary.yaml)
 
-As the pipeline was working correctly, I ran the auto_maj.sh script to check if the pipeline would automatically run. It did run properly.
-
-Finally I created the update procedure document.
 
 [&#8679;](#top)
 
