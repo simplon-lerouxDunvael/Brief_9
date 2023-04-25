@@ -100,9 +100,9 @@ Then I had to download it and place it directly in my Git repository (downloadin
 download kubeconfig.yaml
 ```
 
-Once downloaded, I just had to put the code into the Kubernetes service connection (choosing autoConfig params) to be able to use my pipeline and Kubernetes services.
+Once downloaded, I just had to put the code into the Kubernetes service connection (choosing autoConfig params) to be able to use my pipeline and Kubernetes services. I also added a Docker connection so my pipeline could access my Docker registry and Voting app image.
 
-![service_connection](https://user-images.githubusercontent.com/108001918/234284979-560ba75e-977a-4328-8f39-9dacd37b621f.png)
+![service_connection](https://user-images.githubusercontent.com/108001918/234296946-6a3e6e96-8d3c-43a6-bb98-13f73570440c.png)
 
 Then I created a new GitHub repository and copy/pasteed all the files from the previous repository from brief 8 : azVotingApp_b8duna and named it azVotingApp_b9duna.
 
