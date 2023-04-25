@@ -73,7 +73,7 @@ The issue was still the same, my certificates were in TRUE status, my external I
 
 ![error_page-dns](https://user-images.githubusercontent.com/108001918/234233788-13e21955-9b3a-401d-9f97-2bdf7cbbe3ae.png)
 
-After exchanging with Quentin, I cleared my broswer's cache and used the same commands and config I had from the start (https://helm.nginx.com/stable).
+After exchanging with Quentin, we found out that the nginx from artifacthub was without configuration therefore did not install all the requirements we needed. As it would be difficult and time consuming to create a configuration and apply it, I cleared my broswer's cache and used the same commands and config I had from the start (https://helm.nginx.com/stable). 
 
 [&#8679;](#top)
 
