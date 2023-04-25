@@ -63,7 +63,17 @@ Then i downloaded the kubeconfig file to update it in my GitHub repository :
 download kubeconfig.yaml
 ```
 
-When i tried to connect to the https url I had an error message. With the external IP address an Nginx page was displayed instead of the voting app. Therefore, after deleting my infrastructure, I tried to install Nginx with the commands found on `https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx`.
+When i tried to connect to the https url I had an error message. With the external IP address an Nginx page was displayed instead of the voting app. 
+
+![nginx_page](https://user-images.githubusercontent.com/108001918/234233153-a0ba440f-a147-464c-86fc-3c1a42d6764e.png)
+
+Therefore, after deleting my infrastructure, I tried to install Nginx with the commands found on `https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx`.
+
+The issue was still the same, my certificates were in TRUE status, my external IP linked to the correct DNS name however I still had an error message when using the url to connect.
+
+![error_page-dns](https://user-images.githubusercontent.com/108001918/234233788-13e21955-9b3a-401d-9f97-2bdf7cbbe3ae.png)
+
+
 
 [&#8679;](#top)
 
