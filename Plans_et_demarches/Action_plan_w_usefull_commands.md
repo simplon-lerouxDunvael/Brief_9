@@ -10,13 +10,13 @@
 
 ###### [02 - Creation of a resource group](#RG)
 
-###### [03 - ](#)
+###### [03 - Creating the pipeline](#Pipeline)
 
-###### [04 - ](#)
+###### [04 - Installation of Trivy](#Trivy)
 
-###### [05 - ](#)
+###### [05 - Installation of OWASP Zap](#Owasp)
 
-###### [06 - ](#)
+###### [06 - Using Trivy and OWASP Zap with Azure DevOps Pipelines](#T&OwtADP)
 
 ###### [0 - Usefull Commands](#UsefullCommands)
 
@@ -35,11 +35,11 @@ Frequent meeting with other coworkers to study solutions to encountered problems
 
 <div id='Docs'/>  
 
-#### ** doc reading**
+#### **doc reading**
 
 Researches and reading of documentations to determine the needed prerequisites, functionnalities and softwares to complete the different tasks of Brief 9.
 
-[&#8679;](#top)   
+[&#8679;](#top)  
 
 <div id='RG'/>  
 
@@ -73,13 +73,13 @@ The issue was still the same, my certificates were in TRUE status, my external I
 
 ![error_page-dns](https://user-images.githubusercontent.com/108001918/234233788-13e21955-9b3a-401d-9f97-2bdf7cbbe3ae.png)
 
-After exchanging with Quentin, we found out that the nginx from artifacthub was without configuration therefore did not install all the requirements we needed. As it would be difficult and time consuming to create a configuration and apply it, I cleared my broswer's cache and used the same commands and config I had from the start (https://helm.nginx.com/stable). 
+After exchanging with Quentin, we found out that the nginx from artifacthub was without configuration therefore did not install all the requirements we needed. As it would be difficult and time consuming to create a configuration and apply it, I cleared my broswer's cache and used the same commands and config I had from the start (https://helm.nginx.com/stable).
 
 I changed the let's encrypt (issuer) server to be able to request certificates and it solved my issue. My infrastructure is now deployed and I can connect in https to the azure voting app.
 
 [&#8679;](#top)
 
-<div id=''/>  
+<div id='Pipeline'/>  
 
 ### **Creating the pipeline**
 
@@ -108,12 +108,6 @@ Then I created a new GitHub repository and copy/pasteed all the files from the p
 
 Finally i used the pipeline that was created during brief 8.
 
-[&#8679;](#top)
-
-<div id='PipeCreation'/>  
-
-### **Pipeline creation**
-
 The pipeline is constructed in a specific order :
 
 * First I declared the variables that would be used several times
@@ -124,6 +118,23 @@ The pipeline is constructed in a specific order :
 * Then I promoted the new version to all the pods in the prod namespace (deployment.yaml)
 * As the checks were successful, I deleted the canary deployment from the prod namespace (deployment-canary.yaml)
 
+[&#8679;](#top)
+
+<div id='Trivy'/>  
+
+### **Installation of Trivy**
+
+[&#8679;](#top)
+
+<div id='Owasp'/>  
+
+### **Installation of OWASP Zap**
+
+[&#8679;](#top)
+
+<div id='T&OwtADP'/>  
+
+### **Using Trivy and OWASP Zap with Azure DevOps Pipelines**
 
 [&#8679;](#top)
 
@@ -131,7 +142,7 @@ The pipeline is constructed in a specific order :
 
 ### **USEFULL COMMANDS**
 
-### **To clone and pull a GitHub repository **
+### **To clone and pull a GitHub repository**
 
 ```bash
 git clone [GitHubRepositoryURL]
