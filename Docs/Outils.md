@@ -156,6 +156,14 @@ OWASP Zap, quant à lui, est un outil de test de sécurité spécifiquement con�
 => OWASP Zap bien avec Azure DevOps mais compliqué à configurer
 => si besoin SonarQube qui est bien avec Azure DevOps mais bcp de faux positifs.
 
+Based on your goals and current pipeline, I would recommend integrating SonarQube for static application security testing and Trivy for software composition analysis.
+
+SonarQube is a popular and powerful tool for detecting security issues in code. It can scan code for a variety of vulnerabilities, including SQL injection, cross-site scripting, and more. SonarQube also provides detailed reports on detected issues and can integrate with your CI/CD pipeline to automatically scan code on each build.
+
+Trivy is a lightweight and easy-to-use tool for software composition analysis. It can scan your Docker images and report any known vulnerabilities in the dependencies that the image is built on. Trivy is open-source, integrates easily with your pipeline, and is free to use.
+
+Integrating both SonarQube and Trivy into your pipeline should be straightforward as both have well-documented integration steps. Additionally, since your team is already familiar with yml and bash scripting, it should be easy to integrate these tools into your current pipeline at a low cost.
+
 [&#8679;](#top)
 
 </div>
