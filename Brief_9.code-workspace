@@ -4,7 +4,8 @@
 			"path": "."
 		},
 		{
-			"path": "../azVotingApp_b8duna"
+			"name": "azVotingApp_b9duna",
+			"path": "../azVotingApp_b9duna"
 		}
 	],
 	"settings": {}

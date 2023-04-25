@@ -75,13 +75,34 @@ The issue was still the same, my certificates were in TRUE status, my external I
 
 After exchanging with Quentin, we found out that the nginx from artifacthub was without configuration therefore did not install all the requirements we needed. As it would be difficult and time consuming to create a configuration and apply it, I cleared my broswer's cache and used the same commands and config I had from the start (https://helm.nginx.com/stable). 
 
+I changed the let's encrypt (issuer) server to be able to request certificates and it solved my issue. My infrastructure is now deployed and I can connect in https to the azure voting app.
+
 [&#8679;](#top)
 
 <div id=''/>  
 
-### ** **
+### **Creating the pipeline**
 
+First I went to Azure DevOps, created a project and on Pipelines : <https://dev.azure.com/dlerouxext/b9duna/_build>.
 
+Then, I had to configure my organization and project's [visibility](https://learn.microsoft.com/en-us/azure/devops/organizations/projects/make-project-public?view=azure-devops). I went to the settings and turned on the visibility to public.
+
+Since the last update of Kubernetes, the connection to Azure can't be made with the service connections.  
+Therefore, I had to create a kubeconfig file that recovers several connections informations.
+
+```Bash
+az aks get-credentials --resource-group $rgname --name $aksname -f kubeconfig.yaml
+```
+
+Then I had to download it and place it directly in my Git repository (downloading it from azure terminal does not push it into Git) :
+
+```Bash
+download kubeconfig.yaml
+```
+
+Once downloaded, I just had to put the code into the Kubernetes service connection (choosing autoConfig params) to be able to use my pipeline and Kubernetes services.
+
+![service_connection](https://user-images.githubusercontent.com/108001918/234284979-560ba75e-977a-4328-8f39-9dacd37b621f.png)
 
 [&#8679;](#top)
 
