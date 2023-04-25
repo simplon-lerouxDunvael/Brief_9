@@ -124,6 +124,10 @@ The pipeline is constructed in a specific order :
 
 ### **Installation of Trivy**
 
+First, I went to [Trivy Github](https://github.com/aquasecurity/trivy-azure-pipelines-task) and downloaded Trivy on the [Azure DevOps Market](https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-official) (by clicking on *Get it for Free*) to link it to my Azure DevOps account. Once it was installed I could use Trivy tasks on my pipeline.
+
+![trivy_download](https://user-images.githubusercontent.com/108001918/234309975-4560cc33-49a0-432d-aa18-49e16d0198c1.png)
+
 [&#8679;](#top)
 
 <div id='Owasp'/>  
