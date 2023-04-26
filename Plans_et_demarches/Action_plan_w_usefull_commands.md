@@ -155,7 +155,7 @@ After creating the repository Reports, I created a README.md file so that the ou
 
 In order to ask OWASP Zap to test my Azure Voting App, I created a owaspzap task and completed the configuration needed.
 
-I launch the voting app in the background and repeatedly make HTTP requests to it until it responds. Then in run the OWASP Zap scanner against the app and publish the OWASP Zap report as a build artifact.
+I run the OWASP Zap scanner against the app (after it has been deployed to qua) and publish the OWASP Zap report as a build artifact.
 
 [&#8679;](#top)
 
