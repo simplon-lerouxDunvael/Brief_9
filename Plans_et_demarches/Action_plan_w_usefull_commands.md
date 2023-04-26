@@ -18,7 +18,9 @@
 
 ###### [06 - Using Trivy and OWASP Zap with Azure DevOps Pipelines](#T&OwtADP)
 
-###### [0 - Usefull Commands](#UsefullCommands)
+###### [07 - Prompting administrator to continue or not the pipeline after a failure status from tests](#Admin)
+
+###### [08 - Usefull Commands](#UsefullCommands)
 
 <div id='Scrum'/>  
 
@@ -167,6 +169,8 @@ For the needs of the demonstration, and because OWASP ZAP Scan still detects vul
 
 ![owasp_nofile2](https://user-images.githubusercontent.com/108001918/234592211-e6c28936-da10-425a-9224-8a0da0501831.png)
 
+Here is the link to the reviews of OWASP Zap and the comments about the bug : <https://marketplace.visualstudio.com/items?itemName=CSE-DevOps.zap-scanner&ssr=false#review-details>.
+
 [&#8679;](#top)
 
 <div id='Admin'/>  
@@ -180,6 +184,12 @@ In order to prompt administrator to continue or not the pipeline after a failure
 * <https://stackoverflow.com/questions/56176773/how-to-add-a-manual-intervention-step-in-azure-pipelines-yaml>
 
 Once implemented, the administrator can click on `Review` during the pipeline process and choose wheither to continue or stop the pipeline.
+
+![admin1](https://user-images.githubusercontent.com/108001918/234603075-df816da8-2f27-49a2-acba-401f290b5e5e.png)
+
+![admin2](https://user-images.githubusercontent.com/108001918/234603082-32af3b1a-cd67-4ebd-b937-4363356a41f2.png)
+
+Then the pipeline can run until it is stopped or completes all tasks.
 
 [&#8679;](#top)
 
