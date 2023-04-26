@@ -140,6 +140,15 @@ First, I went to [Trivy Github](https://github.com/aquasecurity/trivy-azure-pipe
 
 ### **Using Trivy and OWASP Zap with Azure DevOps Pipelines**
 
+**Trivy :**
+
+In order to ask Trivy to scan my Docker image, I created a trivy task and completed the configuration needed.
+Then in order to extract the output and gets the metrics, I created a repository at the root of my GitHub repo to store the reports and then extract the temporary output of Trivy before it is destroyed. As a professionnal Aqua account is needed to get the output for Trivy, extracting the temporary output before it is send to Aqua is the only way to get the metrics.
+
+After creating the repository Reports, I created a README.md file so that the output would be directed and pushed into the directory (without any file in it not push is made).
+
+**OWASP Zap :**
+
 [&#8679;](#top)
 
 <div id='UsefullCommands'/>  
