@@ -151,6 +151,7 @@ Then in order to extract the output and gets the metrics, I created a repository
 
 After creating the repository Reports, I created a README.md file so that the output would be directed and pushed into the directory (without any file in it not push is made).
 
+For the needs of the demonstration, and because Trivy detects about 80+K lines of issues with a severity "high" or higher, and because the docker image used for the webapp cannot be changed, the information will be acknowledged but ignored.
 
 **OWASP Zap :**
 
@@ -158,11 +159,13 @@ In order to ask OWASP Zap to test my Azure Voting App, I created a owaspzap task
 
 I run the OWASP Zap scanner against the app (after it has been deployed to qua) and publish the OWASP Zap report as a build artifact.
 
-
-
-We found out with Luna (by looking at the extension review) that there is an issue with owas zap report files that can't be found and extracted.
+OWASP ZAP Scan supposedly has an option to define the output but all of them failed. It appears that it is a common issue according to the reviews of OWASP ZAP Scan, it is a current bug that may or may not be fixed in the future.
 
 ![owasp_nofile](https://user-images.githubusercontent.com/108001918/234587089-15960667-c46c-4ba4-a9ad-b2ce30793780.png)
+
+For the needs of the demonstration, and because OWASP ZAP Scan still detects vulnerabilities, and because the docker image used for the webapp cannot be changed, the information will be acknowledged but ignored.
+
+![owasp_nofile2](https://user-images.githubusercontent.com/108001918/234592211-e6c28936-da10-425a-9224-8a0da0501831.png)
 
 [&#8679;](#top)
 
@@ -176,7 +179,7 @@ In order to prompt administrator to continue or not the pipeline after a failure
 
 * <https://stackoverflow.com/questions/56176773/how-to-add-a-manual-intervention-step-in-azure-pipelines-yaml>
 
-Once implemented, the administartor can click on `Review` during the pipeline process and choose wheither to continue or stop the pipeline.
+Once implemented, the administrator can click on `Review` during the pipeline process and choose wheither to continue or stop the pipeline.
 
 [&#8679;](#top)
 
