@@ -23,20 +23,26 @@ Objectifs :
 Mercredi 26/04/23  
 Résultats de la veille :
 
-* 
+* Pb de connexion avec l'application réglé
+* Intégrer les outils à la pipeline commencé
+* Reformuler la doc outils.md commencé
 
 Objectifs :
 
-* 
+* Intégrer tous les outils à la pipeline
+* Terminer la doc outils
 
 Jeudi 27/04/23  
 Résultats de la veille :
 
-* 
+* Pipeline terminée avec outils intégrés
+* Doc outils terminée et intégrée au plan d'action terminée
+* Brief terminé
 
 Objectifs :
 
-* 
+* Faire la présentation
+* Faire les questions az104
 
 Vendredi 28/04/23  
 Résultats de la veille :
