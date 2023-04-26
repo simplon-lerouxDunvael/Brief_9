@@ -12,15 +12,26 @@
 
 ###### [03 - Creating the pipeline](#Pipeline)
 
-###### [04 - Installation of Trivy](#Trivy)
+###### [04 - Choosing the security tests checking tools](#Choice)
 
-###### [05 - Installation of OWASP Zap](#Owasp)
+###### [05 - Installation of Trivy](#Trivy)
 
-###### [06 - Using Trivy and OWASP Zap with Azure DevOps Pipelines](#T&OwtADP)
+###### [06 - Installation of OWASP Zap](#Owasp)
 
-###### [07 - Prompting administrator to continue or not the pipeline after a failure status from tests](#Admin)
+###### [07 - Using Trivy and OWASP Zap with Azure DevOps Pipelines](#T&OwtADP)
 
-###### [08 - Usefull Commands](#UsefullCommands)
+###### [08 - Prompting administrator to continue or not the pipeline after a failure status from tests](#Admin)
+
+###### [09 - Definition of the different tools](#Definition)
+
+&nbsp;&nbsp;&nbsp;[a) SonarQube](#Sonar)
+&nbsp;&nbsp;&nbsp;[b) OWASP Dependency-Check](#OWASP1)
+&nbsp;&nbsp;&nbsp;[c) Clair](#Clair)
+&nbsp;&nbsp;&nbsp;[d) Trivy](#Trivy)
+&nbsp;&nbsp;&nbsp;[e) Grype](#Grype)
+&nbsp;&nbsp;&nbsp;[f) OWASP Zap](#OWASP2)
+
+###### [10 - Usefull Commands](#UsefullCommands)
 
 <div id='Scrum'/>  
 
@@ -122,6 +133,20 @@ The pipeline is constructed in a specific order :
 
 [&#8679;](#top)
 
+<div id='Choice'/>  
+
+### **Choosing the security tests checking tools**
+
+Based on the tools and environment, I decided to integrate Trivy for container image security scanning and OWASP ZAP for dynamic application security testing.
+
+* Trivy is a lightweight and easy-to-use tool for scanning container images for vulnerabilities. It can be easily integrated into a Docker-based CI/CD pipeline, especially on Azure DevOps as it's available on the Marketplace for free as a container for the VM that will scan the image directly. Additionally, Trivy is compatible with various container image registries and can detect vulnerabilities in both the OS packages and application dependencies.
+
+* OWASP ZAP is a comprehensive tool for testing web applications for security vulnerabilities, and it can be integrated into most CI/CD pipelines. It offers a flexible and customizable testing framework and can detect a wide range of security vulnerabilities, including injection flaws, cross-site scripting, and broken authentication.
+
+By integrating Trivy and OWASP ZAP into my CI/CD pipeline, I can ensure that my container images and web applications are secure and protected against common security threats.
+
+[&#8679;](#top)
+
 <div id='Trivy'/>  
 
 ### **Installation of Trivy**
@@ -193,6 +218,213 @@ Then the pipeline can run until it is stopped or completes all tasks.
 
 *NB : Because of quotas issues with Let's Encrypt, I had to change my server to staging to be able to continue testing. Therefore the curl task in my pipeline can't verify my certificate.  
 However with the other server (i would normally use) it would work perfectly (https://acme-staging-v02.api.letsencrypt.org/directory / https://acme-v02.api.letsencrypt.org/directory)*
+
+[&#8679;](#top)
+
+<div id='Definition'/>  
+
+### **Definition of the different tools**
+
+[&#8679;](#top)
+
+<div id='Sonar'/> 
+
+#### a) SonarQube :  a Static Application Security Testing (SAST) solution
+
+*Definition :* SonarQube is a comprehensive platform that can analyze over 27 programming languages and checks for potential security vulnerabilities, bugs, and code smells. It offers static and dynamic security testing features, as well as code compliance and quality checks. The platform also provides a complete view of project health, including an overview of vulnerabilities.
+
+*Advantages :* SonarQube is a complete solution for code quality and security analysis. It provides detailed reports and metrics to measure code quality and security. SonarQube integrates well with popular CI/CD platforms, including GitLab CI/CD and Azure DevOps.
+
+*Inconvenients :* SonarQube can sometimes produce false positives and its installation and configuration process can be long and tedious. Its free version may have limitations in terms of functionality and support.SonarQube's analysis can be resource-intensive and may require a powerful server to run effectively.
+
+[&#8679;](#top)
+
+<div id='OWASP1'/> 
+
+#### b) OWASP Dependency-Check : a Software Composition Analysis (SCA) solution
+
+*Definition :* OWASP Dependency-Check is an open-source project dependency security testing solution. It can detect vulnerabilities in third-party libraries. It scans both the direct and transitive dependencies of the project and compares them against a database of known vulnerabilities. It supports multiple programming languages, including Java, .NET, and Python.
+
+*Advantages :* For testing vulnerabilities in third-party libraries, OWASP Dependency-Check is a solid choice. It is easy to use, install adn customize to fit a project's specific needs. It provides a comprehensive database of known vulnerabilities and is regularly updated. It also supports multiple programming languages and can be easily integrated into most CI/CD pipelines.
+
+*Inconvenients :* It can produce a large number of false positives and can only detect known vulnerabilities, requiring manual review and investigation. Dependency-Check may add additional time to the build process, especially for large projects with many dependencies.
+
+[&#8679;](#top)
+
+<div id='Clair'/> 
+
+#### c) [Clair](https://github.com/quay/clair) : a Container Image Security solution
+
+*Definition :* Clair is an open-source container security testing tool. It can analyze and detect known vulnerabilities in container images, OS packages and application dependencies. It works by comparing the layers of a container image against a database of known vulnerabilities. Clair can be used with various container image registries, including Docker and Quay.
+
+*Advantages :* Clair is easy to install and use. Clair is simple and easy to use for containers as it can be integrated with a variety of container image registries and works with various operating systems. It offers detailed reports and can detect vulnerabilities in both the OS packages and application dependencies. Clair has a flexible architecture, allowing users to choose from various database and API options.
+
+*Inconvenients :* Clair cannot detect unknown vulnerabilities, does not scan running containers cannot detect vulnerabilities introduced after the container has been built. It can be resource-intensive and may require a powerful server to run effectively, especially for large container images. Clair may produce false positives or negatives and requires manual review and investigation.
+
+[&#8679;](#top)
+
+<div id='Trivy'/> 
+
+#### d) [Trivy](https://github.com/aquasecurity/trivy) : a Container Image Security solution
+
+*Definition :* Trivy is an open-source container security testing tool. It can detect and identify known and unknown vulnerabilities in container images, both OS packages and application dependencies by comparing the layers of a container image against a database of known vulnerabilities. Trivy can be used with various container image registries, including Docker and Kubernetes.
+
+*Advantages :* Trivy is a powerful tool that supports multiple types of containers and can detect unknown vulnerabilities. It also has a comprehensive vulnerability database and is regularly updated with the latest CVEs. Trivy has a simple and easy-to-use command-line interface, and it can be integrated into most CI/CD pipelines.
+
+*Inconvenients :* The runtime of Trivy can be long on large container images, therefore it can be resource-intensive and may require a powerful server to run effectively. Trivy only performs static analysis and cannot detect vulnerabilities introduced after the container has been built and deployed. Manual review and investigation my be required as Trivy can produce false positives or negatives.
+
+[&#8679;](#top)
+
+<div id='Grype'/> 
+
+#### e) [Grype](https://github.com/anchore/grype) : a Software Composition Analysis (SCA) solution
+
+*Definition :* Grype is an open-source container security testing tool (similar to Trivy) that scan images and packages for vulnerabilities. It identifies vulnerabilities in both OS packages and application dependencies by comparing the packages and dependencies against a database of known vulnerabilities. Grype can be used with various container image registries, including Docker and Kubernetes.
+
+*Advantages :* It can detect known and unknown vulnerabilities in container images thanks to a comprehensive vulnerability database regularly updated with the latest CVEs. It can detect vulnerabilities in both the OS packages and application dependencies and supports multiple types of containers. Grype is highly configurable and can be easily integrated into most CI/CD pipelines.
+
+*Inconvenients :* It does not support all of Docker's features, such as platform manifests and only performs static analysis. It cannot detect vulnerabilities introduced after the container has been built and deployed. It can be resource-intensive and may require a powerful server to run effectively, especially for large container images. 
+As Grype can produce false positives or negatives, manual review and investigation can be required. There may be compatibility issues with older versions of Python.
+
+[&#8679;](#top)
+
+<div id='OWASP2'/> 
+
+#### f) OWASP Zap : a Dynamic Application Security Testing (DAST) solution
+
+*Definition :* OWASP Zap (Zed Attack Proxy) is an open-source security testing tool for web applications and checks for security vulnerabilities. ZAP can be used for a wide range of security testing, including automated scanning, manual testing, and penetration testing and works by simulating attacks on the web application and analyzing the responses to identify vulnerabilities.
+
+*Advantages :* For web application security testing, OWASP Zap is a popular option. It offers a wide range of security testing features and can detect a wide range of security vulnerabilities, including injection flaws, cross-site scripting, and broken authentication. It offers a flexible and customizable testing framework, allowing users to create and run custom tests. ZAP provides a comprehensive report of the vulnerabilities detected, including recommendations for remediation. Fianlly it is easy to install and use.
+
+*Inconvenients :* It can produce a large number of false positives which requires manual review and investigation. It may be resource-intensive and may require a powerful server to run effectively, especially for large and complex web applications. As ZAP may generate a large number of alerts it requires skilled security professionals to interpret and act on the results an therefore can be difficult to configure and use for inexperienced users. 
+
+[&#8679;](#top)
+
+----------
+
+**Trivy :**
+
+Trivy can be added to the pipeline by using a Docker container that has Trivy installed. Here are the steps to integrate Trivy :
+
+* Add a new stage to the pipeline and call it "Security Scan".
+* Add a new job to the "Security Scan" stage and name it "Trivy Scan".
+* Specify the Docker image that contains Trivy by adding a Docker task to the "Trivy Scan" job.
+* Configure the Docker task to run Trivy and scan your Docker image.
+
+Here is an example YAML code for the "Security Scan" stage that runs Trivy :
+
+```yaml
+# Security Trivy
+- stage: [stage name]
+  dependsOn: Build
+  jobs:
+  - job: [job name]
+    displayName: '[job display name]'
+    pool:
+      vmImage: '[vm image to run the scan - ubuntu-latest recommended by Az DevOps]'
+    steps:
+    - task: trivy@1
+      inputs:
+        version: 'latest'
+        debug: [boolean]
+        loginDockerConfig: [boolean]
+        image: '[image to scan]'
+        severities: '[CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN]'
+        ignoreUnfixed: [boolean]
+
+```
+
+```yaml
+# Security Trivy
+- stage: TrivyScanSec
+  dependsOn: Build
+  jobs:
+  - job: TrivyScan
+    displayName: 'Run Trivy Scan'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: trivy@1
+      inputs:
+        version: 'latest'
+        debug: true
+        loginDockerConfig: true
+        image: 'dunvael/custom-voting-app'
+        severities: 'CRITICAL,HIGH,MEDIUM'
+        ignoreUnfixed: true
+      displayName: 'Run Trivy scan and save report'
+      # Save the Trivy report to a file in the $(Build.ArtifactStagingDirectory) directory
+      # so that it can be uploaded as an artifact in the next step.
+      # Check out the GitHub repository using a Personal Access Token (PAT) as a secure way to authenticate.
+      # The token should have the "repo" scope.
+    - checkout: self
+      persistCredentials: true
+      displayName: 'Checkout GitHub repository'
+      condition: always()
+        # Copy the Trivy report from the artifact staging directory to the local directory of the checked-out repository
+        # so that it can be committed and pushed to the remote repository.
+    - task: CmdLine@2
+      inputs:
+        script: |
+          mkdir reports
+          cp /tmp/trivy-results-0.*.json reports/trivy-report.json
+          git add reports/trivy-report.json
+          git config --global user.email "simplon.example@gmail.com"
+          git config --global user.name "Simplon-example"
+          git commit -m "Add Trivy report"
+          git push origin HEAD:main
+      displayName: 'Push Trivy report to GitHub'
+      condition: always()
+```
+
+**OWASP Zap :**
+
+OWASP Zap can be added to the pipeline by using an extension that has OWASP Zap installed. Here are the steps to integrate OWASP Zap :
+
+* Add a new stage to the pipeline and call it "Security Scan".
+* Add a new job to the "Security Scan" stage and name it "OWASP Zap Scan".
+* Configure the OWASP Zap task to scan your application (via its URL).
+
+Here is an example YAML code for the "Security Scan" stage that runs OWASP Zap:
+
+```yaml
+# OWASP ZAP Scan
+- stage: OwaspZapScanSec
+  dependsOn: DeployQUA
+  jobs:
+    - job: ZapScan
+      displayName: 'Run OWASP Zap security scan'
+      continueOnError: true
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+      - task: owaspzap@1
+        inputs:
+          aggressivemode: true
+          scantype: 'targetedScan'
+          url: 'https://example-URL.toscan'
+          port: '80, 443'
+        displayName: 'Run OWASP Zap scan and save report'
+        # Check out the GitHub repository using a Personal Access Token (PAT) as a secure way to authenticate.
+      - checkout: self
+        persistCredentials: true
+        displayName: 'Checkout GitHub repository'
+        condition: always()
+          # Copy the OWASP Zap report from the artifact staging directory to the local directory of the checked-out repository so that it can be committed and pushed to the remote repository.
+      - task: CmdLine@2
+        inputs:
+          script: |
+            mkdir reports
+            file=$(find . -name report.json)
+            cp "$file" reports/zap-report.json
+            git add reports/zap-report.json
+            git config --global user.email "simplon.example@gmail.com"
+            git config --global user.name "Simplon-example"
+            git commit -m "Add OWASP Zap test results"
+            git push origin HEAD:main
+        displayName: 'Push OWASP Zap report to GitHub'
+        condition: always()
+```
 
 [&#8679;](#top)
 
