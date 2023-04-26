@@ -134,6 +134,10 @@ First, I went to [Trivy Github](https://github.com/aquasecurity/trivy-azure-pipe
 
 ### **Installation of OWASP Zap**
 
+First, I downloaded OWASP Zap on the [Azure DevOps Market](https://marketplace.visualstudio.com/items?itemName=CSE-DevOps.zap-scanner) (by clicking on *Get it for Free*) to link it to my Azure DevOps account. Once it was installed I could use OWASP Zap tasks on my pipeline.
+
+![owaspzap_download](https://user-images.githubusercontent.com/108001918/234544420-87d0869f-1168-45f2-8f72-d974195dc9ff.png)
+
 [&#8679;](#top)
 
 <div id='T&OwtADP'/>  
@@ -148,6 +152,10 @@ Then in order to extract the output and gets the metrics, I created a repository
 After creating the repository Reports, I created a README.md file so that the output would be directed and pushed into the directory (without any file in it not push is made).
 
 **OWASP Zap :**
+
+In order to ask OWASP Zap to test my Azure Voting App, I created a owaspzap task and completed the configuration needed.
+
+I launch the voting app in the background and repeatedly make HTTP requests to it until it responds. Then in run the OWASP Zap scanner against the app and publish the OWASP Zap report as a build artifact.
 
 [&#8679;](#top)
 
