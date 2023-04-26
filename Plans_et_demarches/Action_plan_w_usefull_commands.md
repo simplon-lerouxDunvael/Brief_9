@@ -157,6 +157,10 @@ In order to ask OWASP Zap to test my Azure Voting App, I created a owaspzap task
 
 I run the OWASP Zap scanner against the app (after it has been deployed to qua) and publish the OWASP Zap report as a build artifact.
 
+https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/manual-validation-v0?view=azure-pipelines
+
+https://stackoverflow.com/questions/56176773/how-to-add-a-manual-intervention-step-in-azure-pipelines-yaml
+
 [&#8679;](#top)
 
 <div id='UsefullCommands'/>  
