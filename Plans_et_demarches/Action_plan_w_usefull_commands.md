@@ -191,6 +191,9 @@ Once implemented, the administrator can click on `Review` during the pipeline pr
 
 Then the pipeline can run until it is stopped or completes all tasks.
 
+*NB : Because of quotas issues with Let's Encrypt, I had to change my server to staging to be able to continue testing. Therefore the curl task in my pipeline can't verify my certificate.  
+However with the other server (i would normally use) it would work perfectly (https://acme-staging-v02.api.letsencrypt.org/directory / https://acme-v02.api.letsencrypt.org/directory)*
+
 [&#8679;](#top)
 
 <div id='UsefullCommands'/>  
