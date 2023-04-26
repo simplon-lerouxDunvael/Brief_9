@@ -151,15 +151,32 @@ Then in order to extract the output and gets the metrics, I created a repository
 
 After creating the repository Reports, I created a README.md file so that the output would be directed and pushed into the directory (without any file in it not push is made).
 
+
 **OWASP Zap :**
 
 In order to ask OWASP Zap to test my Azure Voting App, I created a owaspzap task and completed the configuration needed.
 
 I run the OWASP Zap scanner against the app (after it has been deployed to qua) and publish the OWASP Zap report as a build artifact.
 
-https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/manual-validation-v0?view=azure-pipelines
 
-https://stackoverflow.com/questions/56176773/how-to-add-a-manual-intervention-step-in-azure-pipelines-yaml
+
+We found out with Luna (by looking at the extension review) that there is an issue with owas zap report files that can't be found and extracted.
+
+![owasp_nofile](https://user-images.githubusercontent.com/108001918/234587089-15960667-c46c-4ba4-a9ad-b2ce30793780.png)
+
+[&#8679;](#top)
+
+<div id='Admin'/>  
+
+### **Prompting administrator to continue or not the pipeline after a failure status from tests**
+
+In order to prompt administrator to continue or not the pipeline after a failure status from tests it is necessary to use a manual validation task. All the information on how to configure and implement it in Azure DevOps Pipelines come from :
+
+* <https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/manual-validation-v0?view=azure-pipelines>
+
+* <https://stackoverflow.com/questions/56176773/how-to-add-a-manual-intervention-step-in-azure-pipelines-yaml>
+
+Once implemented, the administartor can click on `Review` during the pipeline process and choose wheither to continue or stop the pipeline.
 
 [&#8679;](#top)
 
