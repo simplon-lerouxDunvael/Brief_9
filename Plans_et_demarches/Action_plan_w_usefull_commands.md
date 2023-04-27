@@ -6,7 +6,7 @@
 
 ###### [00 - Daily Scrum](#Scrum)
 
-###### [01 -  doc reading](#Doc)
+###### [01 -  Doc reading](#Doc)
 
 ###### [02 - Creation of a resource group](#RG)
 
