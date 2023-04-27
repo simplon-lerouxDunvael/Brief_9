@@ -26,12 +26,12 @@
 
 ###### [09 - Definition of the different tools](#Definition)
 
-&nbsp;&nbsp;&nbsp;[a) SonarQube](#Sonar)
-&nbsp;&nbsp;&nbsp;[b) OWASP Dependency-Check](#OWASP1)
-&nbsp;&nbsp;&nbsp;[c) Clair](#Clair)
-&nbsp;&nbsp;&nbsp;[d) Trivy](#Trivy)
-&nbsp;&nbsp;&nbsp;[e) Grype](#Grype)
-&nbsp;&nbsp;&nbsp;[f) OWASP Zap](#OWASP2)
+&nbsp;&nbsp;&nbsp;[a) SonarQube](#Sonar)  
+&nbsp;&nbsp;&nbsp;[b) OWASP Dependency-Check](#OWASP1)  
+&nbsp;&nbsp;&nbsp;[c) Clair](#Clair)  
+&nbsp;&nbsp;&nbsp;[d) Trivy](#Trivy)  
+&nbsp;&nbsp;&nbsp;[e) Grype](#Grype)  
+&nbsp;&nbsp;&nbsp;[f) OWASP Zap](#OWASP2)  
 
 ###### [10 - Usefull Commands](#UsefullCommands)
 
