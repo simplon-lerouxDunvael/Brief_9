@@ -47,49 +47,8 @@ Objectifs :
 Vendredi 28/04/23  
 Résultats de la veille :
 
-* 
+* Présentation réalisée et réussie
 
 Objectifs :
 
-* 
-
-Lundi 05/06/23  
-Objectifs :
-
-* 
-
-Mardi 06/06/23  
-Résultats de la veille :
-
-* 
-
-Objectifs :
-
-* 
-
-Mercredi 07/06/23    
-Résultats de la veille :
-
-* 
-
-Objectifs :
-
-* 
-
-Jeudi 08/06/23    
-Résultats de la veille :
-
-* 
-
-Objectifs :
-
-* 
-
-Vendredi 09/06/23    
-Résultats de la veille :
-
-* 
-
-Objectifs :
-
-* 
+* Réviser l'az104
